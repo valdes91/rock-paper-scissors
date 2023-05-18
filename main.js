@@ -2,15 +2,19 @@ function getComputerChoice() {
 	return choices[Math.floor(Math.random() * choices.length)];
 }
 
+function updateDisplays(playerChoice, computerChoice, result) {
+	const playerDisplay = document.querySelector('.player-choice');
+	const computerDisplay = document.querySelector('.computer-choice');
+	const resultDisplay = document.querySelector('.result');
+
+	playerDisplay.textContent = `ok! you chose ${playerChoice}`;
+	computerDisplay.textContent = `the computer chose ${computerChoice}`;
+	resultDisplay.textContent = result;
+}
+
 function playRound(playerChoice) {
 	const playerChoiceLower = playerChoice.toLowerCase();
 	const computerChoice = getComputerChoice();
-
-	const playerDisplay = document.querySelector('.player-choice');
-	const computerDisplay = document.querySelector('.computer-choice');
-
-	playerDisplay.textContent = `yaha! you chose ${playerChoiceLower}`;
-	computerDisplay.textContent = `the computer chose ${computerChoice}`;
 
 	let result = '';
 	if (computerChoice === playerChoiceLower) result = 'its a tie!';
@@ -24,29 +28,21 @@ function playRound(playerChoice) {
 		if (computerChoice === 'rock') result = 'rock beats scissors. you lose this round :(';
 		else if (computerChoice === 'paper') result = 'scissors beats paper. you win this round :)';
 	}
-	console.log(result);
-	// return result;
+
+	updateDisplays(playerChoiceLower, computerChoice, result);
 }
 
 function game() {
 	let playerWins = 0;
 	let computerWins = 0;
+	let round = 0;
 
 	// plays 5 rounds of rock paper scissors
-	// for (let i = 0; i < 5; i++) {
-	// 	const player = prompt("Enter 'rock', 'paper', or 'scissors");
-	// 	const result = playRound(computer, player);
-	// 	if (result.includes('win')) playerWins++;
-	// 	else if (result.includes('lose')) computerWins++;
-	// 	console.log(result);
-	// }
 
 	// let winner = '';
 	// if (playerWins === computerWins) winner = 'Overall tie!';
 	// else if (playerWins < computerWins) winner = 'Computer wins!';
 	// else winner = 'YOU WON!!!';
-
-	// return winner;
 }
 
 const choices = ['rock', 'paper', 'scissors'];
@@ -56,4 +52,3 @@ choiceButtons.forEach((button) => {
 		playRound(e.target.value);
 	});
 });
-//console.log(game());
