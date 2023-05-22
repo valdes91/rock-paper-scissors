@@ -2,6 +2,18 @@ function getComputerChoice() {
 	return choices[Math.floor(Math.random() * choices.length)];
 }
 
+function checkGameOver() {
+	let didSomeoneWin = computerScore === 5 || playerScore === 5;
+	const resultParagraph = document.querySelector('.result');
+
+	if (didSomeoneWin) {
+		resultParagraph.textContent =
+			playerScore === 5 ? 'You WON! CONGRATULATIONS.' : 'The Computer Won :(';
+		computerScore = 0;
+		playerScore = 0;
+	}
+}
+
 function updateDisplays(playerChoice, computerChoice, result) {
 	const playerDisplay = document.querySelector('.player-choice');
 	const computerDisplay = document.querySelector('.computer-choice');
@@ -10,6 +22,13 @@ function updateDisplays(playerChoice, computerChoice, result) {
 	playerDisplay.textContent = `ok! you chose ${playerChoice}`;
 	computerDisplay.textContent = `the computer chose ${computerChoice}`;
 	resultDisplay.textContent = result;
+
+	const playerWinsParagraph = document.querySelector('.player-wins');
+	const computerWinsParagraph = document.querySelector('.computer-wins');
+	playerWinsParagraph.textContent = `Player Wins: ${playerScore}`;
+	computerWinsParagraph.textContent = `Computer Wins: ${computerScore}`;
+
+	checkGameOver();
 }
 
 function playRound(playerChoice) {
@@ -29,22 +48,14 @@ function playRound(playerChoice) {
 		else if (computerChoice === 'paper') result = 'scissors beats paper. you win this round :)';
 	}
 
+	if (result.includes('lose')) computerScore++;
+	else playerScore++;
+
 	updateDisplays(playerChoiceLower, computerChoice, result);
 }
 
-function game() {
-	let playerWins = 0;
-	let computerWins = 0;
-	let round = 0;
-
-	// plays 5 rounds of rock paper scissors
-
-	// let winner = '';
-	// if (playerWins === computerWins) winner = 'Overall tie!';
-	// else if (playerWins < computerWins) winner = 'Computer wins!';
-	// else winner = 'YOU WON!!!';
-}
-
+let playerScore = 0;
+let computerScore = 0;
 const choices = ['rock', 'paper', 'scissors'];
 const choiceButtons = document.querySelectorAll('button');
 choiceButtons.forEach((button) => {
