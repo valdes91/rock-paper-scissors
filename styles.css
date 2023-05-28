@@ -3,8 +3,93 @@
 *::before,
 *::after {
 	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	font-family: 'Epilogue', sans-serif;
 }
 
-img {
-	max-width: 100%;
+header {
+	padding: 2rem;
+}
+
+header,
+footer {
+	text-align: center;
+	background-color: #3f4e4f;
+}
+
+footer {
+	width: 100%;
+	padding: 1.5rem;
+}
+
+body {
+	height: 100svh;
+}
+
+.container {
+	height: 100%;
+	position: relative;
+	color: #dcd7c9;
+}
+
+.container > * {
+	padding-left: 5rem;
+	padding-right: 5rem;
+}
+
+.container > *,
+.display > * {
+	width: 100%;
+}
+
+p,
+span {
+	font-size: 1.5rem;
+}
+
+button {
+	font-size: 2rem;
+	padding: 2rem;
+	border-radius: 0.5em;
+	border: 2px solid #2c3639;
+	background-color: #a27b5c;
+	cursor: pointer;
+}
+
+.flex {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.col {
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.buttons,
+.choices,
+.scores {
+	justify-content: space-evenly;
+}
+
+.display {
+	text-align: center;
+	background-color: #2c3639;
+	flex: 1;
+	justify-content: space-evenly;
+}
+
+.result {
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+}
+
+.player-choice,
+.computer-choice {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	font-size: 1.25rem;
 }

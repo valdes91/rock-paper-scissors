@@ -49,7 +49,7 @@ function playRound(playerChoice) {
 	}
 
 	if (result.includes('lose')) computerScore++;
-	else playerScore++;
+	else if (result.includes('win')) playerScore++;
 
 	updateDisplays(playerChoiceLower, computerChoice, result);
 }
