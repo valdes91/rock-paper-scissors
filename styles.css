@@ -8,6 +8,11 @@
 	font-family: 'Epilogue', sans-serif;
 }
 
+html,
+body {
+	height: 100%;
+}
+
 header {
 	padding: 2rem;
 }
@@ -23,13 +28,8 @@ footer {
 	padding: 1.5rem;
 }
 
-body {
-	height: 100svh;
-}
-
 .container {
 	height: 100%;
-	position: relative;
 	color: #dcd7c9;
 }
 
@@ -80,6 +80,8 @@ button {
 	background-color: #2c3639;
 	flex: 1;
 	justify-content: space-evenly;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
 }
 
 .result {
@@ -92,4 +94,11 @@ button {
 	margin-top: 1rem;
 	margin-bottom: 1rem;
 	font-size: 1.25rem;
+}
+
+@media only screen and (max-width: 600px) {
+	button {
+		font-size: 1rem;
+		padding: 1rem;
+	}
 }
